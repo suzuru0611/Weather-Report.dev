@@ -3,30 +3,52 @@
     <div v-if="error">{{ error }}</div>
     <div v-else-if="loading">加載中...</div>
     <div v-else>
-      <div>城市：{{ weather.name }}</div>
-      <div>溫度：{{ weather.main.temp }}°C</div>
-      <div>天氣：{{ weather.weather[0].description }}</div>
+      <div>城市：{{ city }}</div>
+      <div>溫度：{{ temperature }}°C</div>
+      <div>天氣狀態：{{ description }}</div>
+      <div>降雨機率：{{ chanceOfRain }}%</div>
+      <div>更新時間：{{ updateTime }}</div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
-import WeatherService from "../services/WeatherService";
+import axios from "axios";
 
-const weather = ref(null);
+const API_KEY = "CWB-B11B778A-92F5-43CD-BBF4-D97FBBDE608D";
+const LOCATION_NAME = "大安區";
+const LOCATION_CODE = "63000030";
+
+const city = ref(null);
+const temperature = ref(null);
+const description = ref(null);
+const chanceOfRain = ref(null);
+const updateTime = ref(null);
+
 const loading = ref(false);
 const error = ref(null);
 
-onMounted(async () => {
+const fetchData = async () => {
   loading.value = true;
+
   try {
-    const data = await WeatherService.getWeather("Taipei");
-    weather.value = data;
+    const res = await axios.get(
+      `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=${API_KEY}&locationName=${LOCATION_NAME}&elementName=Wx,T,PoP12h`
+    );
+    const data = res.data.records.locations[0].location[6];
+    city.value = data.locationName;
+    temperature.value = data.weatherElement[1].time[0].elementValue[0].value;
+    description.value = data.weatherElement[0].time[0].elementValue[0].value;
+    chanceOfRain.value = data.weatherElement[2].time[0].elementValue[0].value;
+    updateTime.value = data.weatherElement[0].time[0].startTime;
   } catch (err) {
     error.value = "獲取天氣資料失敗";
   } finally {
     loading.value = false;
   }
-});
+};
+
+onMounted(fetchData);
+setInterval(fetchData, 600000); // 每隔 10 分鐘重新載入一次資料
 </script>
