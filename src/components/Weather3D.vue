@@ -1,5 +1,5 @@
 <template>
-  <div class="p-5">
+  <div>
     <div v-if="error">{{ error }}</div>
     <div v-else-if="loading">加載中...</div>
     <div v-else>
@@ -18,7 +18,7 @@ import axios from "axios";
 
 const API_KEY = "CWB-B11B778A-92F5-43CD-BBF4-D97FBBDE608D";
 const LOCATION_NAME = "大安區";
-const LOCATION_CODE = "63000030";
+const LOCATION_CODE = "63000080";
 
 const city = ref(null);
 const temperature = ref(null);
@@ -36,7 +36,7 @@ const fetchData = async () => {
     const res = await axios.get(
       `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-063?Authorization=${API_KEY}&locationName=${LOCATION_NAME}&elementName=Wx,T,PoP12h`
     );
-    const data = res.data.records.locations[0].location[6];
+    const data = res.data.records.locations[0].location[0];
     city.value = data.locationName;
     temperature.value = data.weatherElement[1].time[0].elementValue[0].value;
     description.value = data.weatherElement[0].time[0].elementValue[0].value;
