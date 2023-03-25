@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="p-5">
     <div v-if="error">{{ error }}</div>
     <div v-else-if="loading">加載中...</div>
     <div v-else>
