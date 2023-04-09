@@ -3,11 +3,35 @@
     <div v-if="error">{{ error }}</div>
     <div v-else-if="loading">加載中...</div>
     <div v-else>
-      <div>地區：{{ city }}</div>
-      <div>9A.M溫度：{{ temperature9am }}°C,天氣狀態：{{ description9am }}</div>
-      <div>6P.M溫度：{{ temperature6pm }}°C,天氣狀態：{{ description6pm }}</div>
-      <div>降雨機率：{{ chanceOfRain }}%</div>
-      <div>更新時間：{{ updateTime }}</div>
+      <Location>
+        <div>{{ city }}</div>
+      </Location>
+      <inner-box class="flex h-5/6 w-full flex-row">
+        <bubble class="w-4/6">
+          <gif />
+        </bubble>
+        <information class="w-2/6 flex-col">
+          <div class="h-2/6">
+            9A.M溫度：{{ temperature9am }}°C,天氣狀態：{{ description9am }}
+          </div>
+          <div>
+            6P.M溫度：{{ temperature6pm }}°C,天氣狀態：{{ description6pm }}
+          </div>
+          <div>降雨機率：{{ chanceOfRain }}%</div>
+        </information>
+      </inner-box>
+      <UpdateTime class="flex flex-row">
+        <div
+          class="flex w-1/12 justify-center bg-indigo-600 pt-2 pb-2 font-mono text-white"
+        >
+          更新時間
+        </div>
+        <div
+          class="flex w-11/12 justify-center border border-indigo-600 pt-2 pb-2 font-mono"
+        >
+          {{ updateTime }}
+        </div>
+      </UpdateTime>
     </div>
   </div>
 </template>

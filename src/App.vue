@@ -5,9 +5,7 @@ import Weather3D from "./components/Weather3D.vue";
 </script>
 
 <template>
-  <div>
-    <Weather3D />
-  </div>
+  <Weather3D />
 </template>
 
 <style></style>
