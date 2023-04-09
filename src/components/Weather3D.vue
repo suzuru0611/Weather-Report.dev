@@ -1,33 +1,59 @@
 <template>
-  <div>
+  <div class="h-screen">
     <div v-if="error">{{ error }}</div>
     <div v-else-if="loading">加載中...</div>
-    <div v-else>
-      <Location>
-        <div>{{ city }}</div>
+    <div v-else class="flex flex-col">
+      <Location class="h-[10vh] border border-indigo-600">
+        <div
+          class="flex flex-row items-center font-mono text-3xl text-indigo-600"
+        >
+          {{ city }}
+        </div>
       </Location>
-      <inner-box class="flex h-5/6 w-full flex-row">
+      <inner-box class="flex h-[85vh] w-full flex-row">
         <bubble class="w-4/6">
           <gif />
         </bubble>
         <information class="w-2/6 flex-col">
-          <div class="h-2/6">
-            9A.M溫度：{{ temperature9am }}°C,天氣狀態：{{ description9am }}
+          <div
+            class="flex h-3/6 flex-row items-center justify-center border border-indigo-600"
+          ></div>
+          <div
+            class="flex h-2/6 flex-col items-center justify-center border border-indigo-600"
+          >
+            <div class="float-left text-4xl font-extrabold text-indigo-600">
+              明日預報
+            </div>
+            <div class="flex flex-row items-center font-mono text-indigo-600">
+              <div class="pr-3 text-4xl">9A.M-</div>
+              <div class="text-xl">
+                溫度：{{ temperature9am }}°C,天氣狀態：{{ description9am }}
+              </div>
+            </div>
+            <div class="flex flex-row items-center font-mono text-indigo-600">
+              <div class="pr-3 text-4xl">6P.M-</div>
+              <div class="text-xl">
+                溫度：{{ temperature6pm }}°C,天氣狀態：{{ description6pm }}
+              </div>
+            </div>
           </div>
-          <div>
-            6P.M溫度：{{ temperature6pm }}°C,天氣狀態：{{ description6pm }}
+          <div
+            class="flex h-1/6 flex-row items-center justify-center border border-indigo-600 text-indigo-600"
+          >
+            <div class="text-4xl font-extrabold">
+              降雨機率：{{ chanceOfRain }}%
+            </div>
           </div>
-          <div>降雨機率：{{ chanceOfRain }}%</div>
         </information>
       </inner-box>
-      <UpdateTime class="flex flex-row">
+      <UpdateTime class="flex h-[5vh] flex-row">
         <div
           class="flex w-1/12 justify-center bg-indigo-600 pt-2 pb-2 font-mono text-white"
         >
           更新時間
         </div>
         <div
-          class="flex w-11/12 justify-center border border-indigo-600 pt-2 pb-2 font-mono"
+          class="flex w-11/12 justify-center border border-indigo-600 pt-2 pb-2 font-mono text-indigo-600"
         >
           {{ updateTime }}
         </div>
