@@ -11,13 +11,19 @@
         </div>
       </Location>
       <inner-box class="flex h-[85vh] w-full flex-row">
-        <bubble class="w-4/6 bg-rose-600">
-          <video src="../assets/sun.webm" autoplay loop muted></video>
-        </bubble>
+        <bubble class="w-4/6 bg-rose-600"> </bubble>
         <information class="w-2/6 flex-col">
           <div
             class="flex h-3/6 flex-row items-center justify-center border border-indigo-600"
-          ></div>
+          >
+            <video
+              class="h-full w-full"
+              src="../assets/sun.webm"
+              autoplay
+              loop
+              muted
+            ></video>
+          </div>
           <div
             class="flex h-2/6 flex-col items-center justify-center border border-indigo-600"
           >
