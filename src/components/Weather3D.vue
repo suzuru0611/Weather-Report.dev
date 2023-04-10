@@ -3,7 +3,7 @@
     <div v-if="error">{{ error }}</div>
     <div v-else-if="loading">加載中...</div>
     <div v-else class="flex flex-col">
-      <Location class="h-[10vh] border border-indigo-600">
+      <Location class="h-[8vh] border border-indigo-600 xl:h-[10vh]">
         <div
           class="flex flex-row items-center font-mono text-3xl text-indigo-600"
         >
@@ -17,8 +17,8 @@
             class="flex h-3/6 flex-row items-center justify-center border border-indigo-600"
           >
             <video
-              class="h-full w-full"
-              src="../assets/sun.webm"
+              class="h-full w-screen"
+              src="../assets/rain.webm"
               autoplay
               loop
               muted
@@ -27,18 +27,20 @@
           <div
             class="flex h-2/6 flex-col items-center justify-center border border-indigo-600"
           >
-            <div class="float-left text-4xl font-extrabold text-indigo-600">
+            <div
+              class="float-left text-2xl font-extrabold text-indigo-600 xl:text-4xl"
+            >
               明日預報
             </div>
             <div class="flex flex-row items-center font-mono text-indigo-600">
-              <div class="pr-3 text-4xl">9A.M-</div>
-              <div class="text-xl">
+              <div class="pr-3 text-xl xl:text-4xl">9A.M-</div>
+              <div class="text-base xl:text-xl">
                 溫度：{{ temperature9am }}°C,天氣狀態：{{ description9am }}
               </div>
             </div>
             <div class="flex flex-row items-center font-mono text-indigo-600">
-              <div class="pr-3 text-4xl">6P.M-</div>
-              <div class="text-xl">
+              <div class="pr-3 text-xl xl:text-4xl">6P.M-</div>
+              <div class="text-base xl:text-4xl">
                 溫度：{{ temperature6pm }}°C,天氣狀態：{{ description6pm }}
               </div>
             </div>
@@ -46,20 +48,20 @@
           <div
             class="flex h-1/6 flex-row items-center justify-center border border-indigo-600 text-indigo-600"
           >
-            <div class="text-4xl font-extrabold">
+            <div class="text-xl font-extrabold xl:text-4xl">
               降雨機率：{{ chanceOfRain }}%
             </div>
           </div>
         </information>
       </inner-box>
-      <UpdateTime class="flex h-[5vh] flex-row">
+      <UpdateTime class="flex h-[8bh] flex-row xl:h-[5vh]">
         <div
-          class="flex w-1/12 justify-center bg-indigo-600 pt-2 pb-2 font-mono text-white"
+          class="flex w-1/12 justify-center bg-indigo-600 pt-2 pb-2 font-mono text-sm text-white"
         >
           更新時間
         </div>
         <div
-          class="flex w-11/12 justify-center border border-indigo-600 pt-2 pb-2 font-mono text-indigo-600"
+          class="flex w-11/12 justify-center border border-indigo-600 pt-2 pb-2 font-mono text-sm text-indigo-600"
         >
           {{ updateTime }}
         </div>
