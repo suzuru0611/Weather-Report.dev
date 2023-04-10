@@ -11,8 +11,8 @@
         </div>
       </Location>
       <inner-box class="flex h-[85vh] w-full flex-row">
-        <bubble class="w-4/6">
-          <gif />
+        <bubble class="w-4/6 bg-rose-600">
+          <video src="../assets/sun.webm" autoplay loop muted></video>
         </bubble>
         <information class="w-2/6 flex-col">
           <div
