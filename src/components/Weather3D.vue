@@ -26,7 +26,7 @@
         >
           <div class="text-indigo-600">temp</div>
         </div>
-        <div class=""></div>
+        <div class="">123123123</div>
         <div
           class="absolute right-0 flex h-full w-[10rem] flex-row items-center justify-center border-l border-indigo-600"
         >
