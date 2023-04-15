@@ -12,18 +12,21 @@
         <div
           class="flex h-full w-[10rem] items-center justify-center bg-indigo-600 font-mono text-3xl text-indigo-600"
         >
-          <P class="text-white">
+          <div class="text-white">
             {{ city }}
-          </P>
+          </div>
+        </div>
+        <div
+          class="flex w-[10rem] items-center justify-center border-r border-indigo-600"
+        >
+          <div class="text-indigo-600">time</div>
         </div>
         <div
           class="flex w-[5rem] items-center justify-center border-r border-indigo-600"
         >
-          <div class="text-indigo-600">time</div>
+          <div class="text-indigo-600">temp</div>
         </div>
-        <div class="flex w-[10rem] items-center justify-center">
-          <div class="text-indigo-600">temperature</div>
-        </div>
+        <div class=""></div>
         <div
           class="absolute right-0 flex h-full w-[10rem] flex-row items-center justify-center border-l border-indigo-600"
         >
@@ -58,20 +61,20 @@
               明日預報
             </div>
             <div class="flex flex-row items-center font-mono text-indigo-600">
-              <div class="pr-3 text-xl xl:text-4xl">9A.M-</div>
+              <div class="pr-3 text-xl xl:text-4xl">9A.M:</div>
               <div class="text-base xl:text-xl">
                 溫度：{{ temperature9am }}°C,天氣狀態：{{ description9am }}
               </div>
             </div>
             <div class="flex flex-row items-center font-mono text-indigo-600">
-              <div class="pr-3 text-xl xl:text-4xl">6P.M-</div>
+              <div class="pr-3 text-xl xl:text-4xl">6P.M:</div>
               <div class="text-base xl:text-xl">
                 溫度：{{ temperature6pm }}°C,天氣狀態：{{ description6pm }}
               </div>
             </div>
           </div>
           <div
-            class="flex h-1/6 flex-row items-center justify-center border border-indigo-600 text-indigo-600"
+            class="flex h-1/6 flex-row items-center justify-center border-x border-indigo-600 text-indigo-600"
           >
             <div class="text-xl font-extrabold xl:text-4xl">
               降雨機率：{{ chanceOfRain }}%
@@ -151,7 +154,6 @@ const description9am = ref(null);
 const description6pm = ref(null);
 const chanceOfRain = ref(null);
 const updateTime = ref(null);
-
 const loading = ref(false);
 const error = ref(null);
 
