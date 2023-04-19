@@ -2,9 +2,9 @@
   <div class="h-screen">
     <div v-if="error">{{ error }}</div>
     <div v-else-if="loading">加載中...</div>
-    <div v-else class="flex flex-col border border-indigo-600 p-5 xl:h-[100vh]">
+    <div v-else class="relative flex flex-col p-5 xl:h-[100vh]">
       <Location
-        class="relative flex h-[10vh] flex-row border border-indigo-600 xl:h-[10vh]"
+        class="relative flex h-[10vh] flex-row border border-indigo-600 xl:h-[15vh]"
       >
         <div class="w-[5rem]">
           <img src="../assets/logo.png" alt="logo" />
@@ -35,13 +35,12 @@
           </div>
         </div>
       </Location>
-      <inner-box class="flex h-[80vh] w-full flex-row">
-        <bubble class="relative w-full bg-rose-600 xl:w-4/6">
-          <div class="bottom-13 absolute left-20">{{ temperature9am }}</div>
-          <div class="absolute left-20 bottom-10">{{ temperature6pm }}</div>
-          <div class="absolute">{{}}</div>
-          <div class="absolute">{{}}</div>
-          <div class="absolute">{{}}</div>
+      <inner-box class="relative flex h-[80vh] flex-row">
+        <bubble class="flex items-center justify-center bg-teal-100 xl:w-4/6">
+          <img
+            src="../assets/umbrella.gif"
+            alt="Alternative text for accessibility"
+          />
         </bubble>
         <information class="hidden w-2/6 flex-col xl:flex">
           <div
@@ -88,7 +87,7 @@
           </div>
         </information>
       </inner-box>
-      <information class="flex w-full flex-col xl:hidden">
+      <information class="relative flex w-full flex-col xl:hidden">
         <div
           class="flex h-3/6 flex-row items-center justify-center border border-indigo-600"
         >
@@ -129,7 +128,7 @@
           </div>
         </div>
       </information>
-      <UpdateTime class="flex h-[8bh] flex-row xl:h-[5vh]">
+      <UpdateTime class="relative flex h-[8bh] flex-row xl:h-[5vh]">
         <div
           class="flex w-2/12 justify-center bg-indigo-600 pt-2 pb-2 font-mono text-sm text-white xl:w-1/12"
         >
