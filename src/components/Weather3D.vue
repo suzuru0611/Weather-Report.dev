@@ -36,7 +36,13 @@
         </div>
       </Location>
       <inner-box class="flex h-[80vh] w-full flex-row">
-        <bubble class="w-full bg-rose-600 xl:w-4/6"> </bubble>
+        <bubble class="relative w-full bg-rose-600 xl:w-4/6">
+          <div class="bottom-13 absolute left-20">{{ temperature9am }}</div>
+          <div class="absolute left-20 bottom-10">{{ temperature6pm }}</div>
+          <div class="absolute">{{}}</div>
+          <div class="absolute">{{}}</div>
+          <div class="absolute">{{}}</div>
+        </bubble>
         <information class="hidden w-2/6 flex-col xl:flex">
           <div
             class="relative flex h-3/6 flex-row items-center justify-center border-x border-indigo-600"
