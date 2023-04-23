@@ -35,12 +35,35 @@
           </div>
         </div>
       </Location>
-      <inner-box class="relative flex h-[80vh] flex-row">
-        <bubble class="flex items-center justify-center bg-teal-100 xl:w-4/6">
+      <inner-box class="flex h-[80vh] flex-row">
+        <bubble
+          class="sm::w-4/6 relative flex items-center justify-center bg-teal-100"
+        >
           <img
+            class="flex w-4/6"
             src="../assets/umbrella.gif"
             alt="Alternative text for accessibility"
           />
+          <div
+            class="absolute left-[13rem] bottom-[9rem] font-mono text-5xl text-indigo-300"
+          >
+            {{ temperature9am }}°C
+          </div>
+          <div
+            class="absolute right-[13rem] bottom-[9rem] font-mono text-5xl text-indigo-300"
+          >
+            {{ temperature6pm }}°C
+          </div>
+          <div
+            class="absolute right-[13rem] top-[9rem] font-mono text-5xl text-indigo-300"
+          >
+            {{ description9am }}
+          </div>
+          <div
+            class="absolute left-[13rem] top-[9rem] font-mono text-5xl text-indigo-300"
+          >
+            {{ description6pm }}
+          </div>
         </bubble>
         <information class="hidden w-2/6 flex-col xl:flex">
           <div
