@@ -4,7 +4,7 @@
     <div v-else-if="loading">加載中...</div>
     <div v-else class="relative flex flex-col p-5 xl:h-[100vh]">
       <Location
-        class="relative flex h-[10vh] flex-row border border-indigo-600 xl:h-[15vh]"
+        class="relative flex h-[7vh] flex-row border border-indigo-600 xl:h-[15vh]"
       >
         <div class="w-[5rem]">
           <img src="../assets/logo.png" alt="logo" />
@@ -17,16 +17,18 @@
           </div>
         </div>
         <div
-          class="flex w-[10rem] items-center justify-center border-r border-indigo-600"
+          class="hidden w-[10rem] items-center justify-center border-r border-indigo-600 xl:flex"
         >
-          <div class="text-indigo-600">time</div>
+          <div class="text-indigo-600">{{ currentTime }}</div>
         </div>
         <div
           class="flex w-[5rem] items-center justify-center border-r border-indigo-600"
         >
-          <div class="text-indigo-600">temp</div>
+          <div class="text-indigo-600">{{ currentTem }}°C</div>
         </div>
-        <div class="">123123123</div>
+        <div class="hidden xl:flex">
+          <div>After reading it, go wash and sleep</div>
+        </div>
         <div
           class="absolute right-0 flex h-full w-[10rem] flex-row items-center justify-center border-l border-indigo-600"
         >
@@ -35,34 +37,43 @@
           </div>
         </div>
       </Location>
-      <inner-box class="flex h-[80vh] flex-row">
+      <inner-box class="flex h-[60vh] flex-row xl:h-[80vh]">
         <bubble
           class="sm::w-4/6 relative flex items-center justify-center bg-teal-100"
         >
-          <img
-            class="flex w-4/6"
-            src="../assets/umbrella.gif"
-            alt="Alternative text for accessibility"
-          />
-          <div
-            class="absolute left-[13rem] bottom-[9rem] font-mono text-5xl text-indigo-300"
-          >
+          <img class="flex w-4/6" :src="weatherGif" alt="weatherGif" />
+          <div class="absolute top-[5rem] font-mono text-5xl text-indigo-300">
             {{ temperature9am }}°C
           </div>
           <div
-            class="absolute right-[13rem] bottom-[9rem] font-mono text-5xl text-indigo-300"
+            class="absolute left-[3rem] bottom-[9rem] font-mono text-5xl text-indigo-300"
+          >
+            What To Bring
+          </div>
+          <div
+            class="absolute right-[23rem] bottom-[4rem] font-mono text-5xl text-indigo-300"
           >
             {{ temperature6pm }}°C
           </div>
           <div
-            class="absolute right-[13rem] top-[9rem] font-mono text-5xl text-indigo-300"
+            class="absolute right-[19rem] top-[2rem] font-mono text-5xl text-indigo-300"
           >
             {{ description9am }}
           </div>
           <div
-            class="absolute left-[13rem] top-[9rem] font-mono text-5xl text-indigo-300"
+            class="absolute left-[12rem] top-[10rem] font-mono text-5xl text-indigo-300"
           >
             {{ description6pm }}
+          </div>
+          <div
+            class="absolute left-[22rem] top-[16rem] font-mono text-5xl text-indigo-300"
+          >
+            {{ chanceOfRain }}
+          </div>
+          <div
+            class="absolute left-[8rem] top-[4rem] font-mono text-5xl text-indigo-300"
+          >
+            {{ updateTime }}
           </div>
         </bubble>
         <information class="hidden w-2/6 flex-col xl:flex">
@@ -74,7 +85,7 @@
             </div>
             <video
               class="h-full w-screen"
-              src="../assets/rain.webm"
+              :src="whatToBring"
               autoplay
               loop
               muted
@@ -110,20 +121,9 @@
           </div>
         </information>
       </inner-box>
-      <information class="relative flex w-full flex-col xl:hidden">
+      <information class="relative flex h-[20vh] w-full flex-col xl:hidden">
         <div
-          class="flex h-3/6 flex-row items-center justify-center border border-indigo-600"
-        >
-          <video
-            class="h-full w-screen"
-            src="../assets/rain.webm"
-            autoplay
-            loop
-            muted
-          ></video>
-        </div>
-        <div
-          class="flex h-2/6 flex-col items-center justify-center border border-indigo-600"
+          class="flex h-4/6 flex-col items-center justify-center border border-indigo-600"
         >
           <div
             class="float-left text-2xl font-extrabold text-indigo-600 xl:text-4xl"
@@ -144,14 +144,14 @@
           </div>
         </div>
         <div
-          class="flex h-1/6 flex-row items-center justify-center border-indigo-600 text-indigo-600"
+          class="boede flex h-2/6 flex-row items-center justify-center border-x border-indigo-600 text-indigo-600"
         >
           <div class="text-xl font-extrabold xl:text-4xl">
             降雨機率：{{ chanceOfRain }}%
           </div>
         </div>
       </information>
-      <UpdateTime class="relative flex h-[8bh] flex-row xl:h-[5vh]">
+      <UpdateTime class="relative flex h-[4vh] flex-row xl:h-[5vh]">
         <div
           class="flex w-2/12 justify-center bg-indigo-600 pt-2 pb-2 font-mono text-sm text-white xl:w-1/12"
         >
@@ -168,22 +168,32 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import axios from "axios";
 
 const API_KEY = "CWB-B11B778A-92F5-43CD-BBF4-D97FBBDE608D";
 const LOCATION_NAME = "大安區";
-const LOCATION_CODE = "63000080";
 
 const city = ref(null);
 const temperature9am = ref(null);
 const temperature6pm = ref(null);
 const description9am = ref(null);
 const description6pm = ref(null);
+const currentTem = ref(null);
 const chanceOfRain = ref(null);
 const updateTime = ref(null);
 const loading = ref(false);
 const error = ref(null);
+
+// 使用Vue的ref创建响应式数据
+const currentTime = ref(new Date().toLocaleString());
+
+// 在组件被挂载时开始更新时间
+onMounted(() => {
+  setInterval(() => {
+    currentTime.value = new Date().toLocaleString();
+  }, 1000);
+});
 
 const fetchData = async () => {
   loading.value = true;
@@ -196,10 +206,11 @@ const fetchData = async () => {
     city.value = data.locationName;
     description9am.value = data.weatherElement[1].time[7].elementValue[0].value;
     description6pm.value =
-      data.weatherElement[1].time[10].elementValue[0].value;
-    temperature9am.value = data.weatherElement[2].time[7].elementValue[0].value;
+      data.weatherElement[1].time[12].elementValue[0].value;
+    temperature9am.value = data.weatherElement[2].time[9].elementValue[0].value;
     temperature6pm.value =
       data.weatherElement[2].time[10].elementValue[0].value;
+    currentTem.value = data.weatherElement[2].time[5].elementValue[0].value;
     chanceOfRain.value = data.weatherElement[0].time[1].elementValue[0].value;
     updateTime.value = data.weatherElement[0].time[0].startTime;
   } catch (err) {
@@ -209,6 +220,20 @@ const fetchData = async () => {
   }
 };
 
+const weatherGif = computed(() => {
+  if (chanceOfRain.value > 60) {
+    return "./src/assets/umbrella.gif";
+  } else {
+    return "./src/assets/skateboard.gif";
+  }
+});
+const whatToBring = computed(() => {
+  if (chanceOfRain.value > 60) {
+    return "./src/assets/rain.webm";
+  } else {
+    return "./src/assets/sun.webm";
+  }
+});
 onMounted(fetchData);
 setInterval(fetchData, 600000); // 每隔 10 分鐘重新載入一次資料
 </script>
