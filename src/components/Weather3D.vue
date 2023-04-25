@@ -51,27 +51,27 @@
             What To Bring
           </div>
           <div
-            class="absolute left-[5rem] bottom-[6rem] font-mono text-5xl text-indigo-300"
+            class="absolute left-[5rem] bottom-[6rem] font-mono text-xl text-indigo-300"
           >
             明日
           </div>
           <div
-            class="absolute left-[5rem] bottom-[8rem] font-mono text-5xl text-indigo-300"
+            class="absolute left-[5rem] bottom-[8rem] font-mono text-xl text-indigo-300"
           >
             明日
           </div>
           <div
-            class="absolute left-[5rem] bottom-[10rem] font-mono text-5xl text-indigo-300"
+            class="absolute left-[5rem] bottom-[10rem] font-mono text-xl text-indigo-300"
           >
             明日
           </div>
           <div
-            class="absolute left-[5rem] bottom-[12rem] font-mono text-5xl text-indigo-300"
+            class="absolute left-[5rem] bottom-[12rem] font-mono text-xl text-indigo-300"
           >
             明日
           </div>
           <div
-            class="absolute left-[5rem] bottom-[14rem] font-mono text-5xl text-indigo-300"
+            class="absolute left-[5rem] bottom-[14rem] font-mono text-xl text-indigo-300"
           >
             明日
           </div>
