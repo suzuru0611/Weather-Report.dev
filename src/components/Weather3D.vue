@@ -6,11 +6,11 @@
       <Location
         class="relative flex h-[7vh] flex-row border border-indigo-600 xl:h-[15vh]"
       >
-        <div class="w-[5rem]">
-          <img src="../assets/logo.png" alt="logo" />
+        <div class="auto flex w-[3rem] items-center justify-center">
+          <img src="../assets/weather_icon.svg" alt="logo" />
         </div>
         <div
-          class="flex h-full w-[10rem] items-center justify-center bg-indigo-600 font-mono text-3xl text-indigo-600"
+          class="flex h-full w-[10rem] items-center justify-center bg-indigo-800 font-mono text-3xl text-indigo-600"
         >
           <div class="text-white">
             {{ city }}
@@ -39,9 +39,9 @@
       </Location>
       <inner-box class="flex h-[60vh] flex-row xl:h-[80vh]">
         <bubble
-          class="sm::w-4/6 relative flex items-center justify-center bg-teal-100"
+          class="sm::w-4/6 relative flex items-center justify-center border-x border-indigo-600 bg-teal-200 xl:border-none"
         >
-          <img class="flex w-4/6" :src="weatherGif" alt="weatherGif" />
+          <img class="z-10 flex w-4/6" :src="weatherGif" alt="weatherGif" />
           <div class="absolute top-[5rem] font-mono text-5xl text-indigo-300">
             {{ temperature9am }}°C
           </div>
@@ -49,6 +49,31 @@
             class="absolute left-[3rem] bottom-[9rem] font-mono text-5xl text-indigo-300"
           >
             What To Bring
+          </div>
+          <div
+            class="absolute left-[5rem] bottom-[6rem] font-mono text-5xl text-indigo-300"
+          >
+            明日
+          </div>
+          <div
+            class="absolute left-[5rem] bottom-[8rem] font-mono text-5xl text-indigo-300"
+          >
+            明日
+          </div>
+          <div
+            class="absolute left-[5rem] bottom-[10rem] font-mono text-5xl text-indigo-300"
+          >
+            明日
+          </div>
+          <div
+            class="absolute left-[5rem] bottom-[12rem] font-mono text-5xl text-indigo-300"
+          >
+            明日
+          </div>
+          <div
+            class="absolute left-[5rem] bottom-[14rem] font-mono text-5xl text-indigo-300"
+          >
+            明日
           </div>
           <div
             class="absolute right-[23rem] bottom-[4rem] font-mono text-5xl text-indigo-300"
