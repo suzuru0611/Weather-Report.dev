@@ -45,13 +45,16 @@
           <div class="absolute top-[5rem] font-mono text-5xl text-indigo-300">
             {{ temperature9am }}°C
           </div>
-          <div
-            class="absolute left-[3rem] bottom-[9rem] font-mono text-5xl text-indigo-300"
-          >
+          <div class="absolute top-[3rem] font-mono text-5xl text-indigo-300">
             What To Bring
           </div>
           <div
-            class="absolute left-[5rem] bottom-[6rem] font-mono text-xl text-indigo-300"
+            class="absolute left-[5rem] bottom-[2rem] font-mono text-xl text-indigo-300"
+          >
+            明日
+          </div>
+          <div
+            class="absolute left-[5rem] bottom-[5rem] font-mono text-xl text-indigo-300"
           >
             明日
           </div>
@@ -61,12 +64,7 @@
             明日
           </div>
           <div
-            class="absolute left-[5rem] bottom-[10rem] font-mono text-xl text-indigo-300"
-          >
-            明日
-          </div>
-          <div
-            class="absolute left-[5rem] bottom-[12rem] font-mono text-xl text-indigo-300"
+            class="absolute left-[5rem] bottom-[11rem] font-mono text-xl text-indigo-300"
           >
             明日
           </div>
