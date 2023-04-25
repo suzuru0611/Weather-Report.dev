@@ -6,7 +6,7 @@
       <Location
         class="relative flex h-[7vh] flex-row border border-indigo-600 xl:h-[15vh]"
       >
-        <div class="auto flex w-[3rem] items-center justify-center">
+        <div class="auto flex w-[5rem] items-center justify-center">
           <img src="../assets/weather_icon.svg" alt="logo" />
         </div>
         <div
