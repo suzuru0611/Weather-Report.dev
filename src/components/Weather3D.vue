@@ -26,8 +26,8 @@
         >
           <div class="text-indigo-600">{{ currentTem }}°C</div>
         </div>
-        <div class="hidden xl:flex">
-          <div>After reading it, go wash and sleep</div>
+        <div class="hidden items-center xl:flex">
+          <p>After reading it, Go wash and sleepp></p>
         </div>
         <div
           class="absolute right-0 flex h-full w-[10rem] flex-row items-center justify-center border-l border-indigo-600"
@@ -103,10 +103,14 @@
           <div
             class="relative flex h-3/6 flex-row items-center justify-center border-x border-indigo-600"
           >
-            <div class="absolute top-5 left-5">
-              <p class="font-mono text-base text-indigo-600 xl:text-4xl">
-                <img src="../assets/weather_icon.svg" alt="weather_icon" />
-              </p>
+            <div class="absolute top-3 left-3">
+              <video
+                class="w-[5rem] xl:w-[10rem]"
+                :src="bubble"
+                autoplay
+                loop
+                muted
+              ></video>
             </div>
             <video
               class="h-full w-screen"
@@ -244,6 +248,14 @@ const fetchData = async () => {
     loading.value = false;
   }
 };
+
+const bubble = computed(() => {
+  if (chanceOfRain.value > 60) {
+    return "./src/assets/bubble_rain.gif";
+  } else {
+    return "./src/assets/bubble_sun.gif";
+  }
+});
 
 const whatToBring = computed(() => {
   if (chanceOfRain.value > 60) {
