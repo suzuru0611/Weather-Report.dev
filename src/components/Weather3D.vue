@@ -41,7 +41,7 @@
         <bubble
           class="sm::w-4/6 relative flex items-center justify-center border-x border-indigo-600 bg-teal-200 xl:border-none"
         >
-          <img class="z-10 flex w-4/6" :src="weatherGif" alt="weatherGif" />
+          <img class="z-10 flex w-4/6" :src="whatToBring" alt="whatToBring" />
           <div class="absolute top-[5rem] font-mono text-5xl text-indigo-300">
             {{ temperature9am }}°C
           </div>
@@ -104,11 +104,13 @@
             class="relative flex h-3/6 flex-row items-center justify-center border-x border-indigo-600"
           >
             <div class="absolute top-5 left-5">
-              <p class="font-mono text-base text-indigo-600 xl:text-4xl">123</p>
+              <p class="font-mono text-base text-indigo-600 xl:text-4xl">
+                <img src="../assets/weather_icon.svg" alt="weather_icon" />
+              </p>
             </div>
             <video
               class="h-full w-screen"
-              :src="whatToBring"
+              :src="weatherGif"
               autoplay
               loop
               muted
@@ -243,14 +245,14 @@ const fetchData = async () => {
   }
 };
 
-const weatherGif = computed(() => {
+const whatToBring = computed(() => {
   if (chanceOfRain.value > 60) {
     return "./src/assets/umbrella.gif";
   } else {
     return "./src/assets/skateboard.gif";
   }
 });
-const whatToBring = computed(() => {
+const weatherGif = computed(() => {
   if (chanceOfRain.value > 60) {
     return "./src/assets/rain.webm";
   } else {
