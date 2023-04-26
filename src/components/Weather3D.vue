@@ -45,7 +45,7 @@
           <div class="absolute top-[5rem] font-mono text-5xl text-indigo-300">
             {{ temperature9am }}°C
           </div>
-          <div class="absolute top-[3rem] font-mono text-5xl text-indigo-300">
+          <div class="absolute top-[3rem] font-mono text-5xl text-indigo-100">
             What To Bring
           </div>
           <div
@@ -79,6 +79,11 @@
             {{ temperature6pm }}°C
           </div>
           <div
+            class="absolute right-[23rem] bottom-[4rem] font-mono text-5xl text-indigo-300"
+          >
+            {{ temperature9am }}°C
+          </div>
+          <div
             class="absolute right-[19rem] top-[2rem] font-mono text-5xl text-indigo-300"
           >
             {{ description9am }}
@@ -106,7 +111,7 @@
             <div class="absolute top-3 left-3">
               <video
                 class="w-[5rem] xl:w-[10rem]"
-                :src="bubble"
+                :src="bubbleGif"
                 autoplay
                 loop
                 muted
@@ -249,7 +254,7 @@ const fetchData = async () => {
   }
 };
 
-const bubble = computed(() => {
+const bubbleGif = computed(() => {
   if (chanceOfRain.value > 60) {
     return "./src/assets/bubble_rain.gif";
   } else {
