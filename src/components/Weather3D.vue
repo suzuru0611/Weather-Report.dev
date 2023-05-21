@@ -2,109 +2,50 @@
   <div class="h-screen">
     <div v-if="error">{{ error }}</div>
     <div v-else-if="loading">加載中...</div>
-    <div v-else class="relative flex flex-col p-5 xl:h-[100vh]">
+    <div v-else class="relative flex flex-col overflow-hidden p-5 xl:h-[100vh]">
       <Location
         class="relative flex h-[7vh] flex-row border border-indigo-600 xl:h-[15vh]"
       >
-        <div class="auto flex w-[5rem] items-center justify-center">
+        <div class="flex w-[10rem] items-center justify-center xl:w-[10rem]">
           <img src="../assets/weather_icon.svg" alt="logo" />
         </div>
         <div
-          class="flex h-full w-[10rem] items-center justify-center bg-indigo-800 font-mono text-3xl text-indigo-600"
+          class="flex h-full w-[10rem] items-center justify-center border-x border-indigo-600 font-bold text-indigo-600 xl:w-[15rem] xl:text-[2rem]"
         >
-          <div class="text-white">
+          <div class="text-indigo-600e">
             {{ city }}
           </div>
         </div>
         <div
-          class="hidden w-[10rem] items-center justify-center border-r border-indigo-600 xl:flex"
+          class="hidden w-[10rem] items-center border-r border-indigo-600 xl:flex xl:w-[25rem] xl:text-[1.2rem]"
         >
-          <div class="text-indigo-600">{{ currentTime }}</div>
+          <div class="ml-5 text-indigo-600">{{ currentTime }}</div>
         </div>
         <div
-          class="flex w-[5rem] items-center justify-center border-r border-indigo-600"
+          class="flex w-[10rem] items-center justify-center border-indigo-600 md:border-r xl:w-[13rem] xl:text-[2rem]"
         >
           <div class="text-indigo-600">{{ currentTem }}°C</div>
         </div>
-        <div class="hidden items-center xl:flex">
-          <p>After reading it, Go wash and sleepp></p>
-        </div>
-        <div
-          class="absolute right-0 flex h-full w-[10rem] flex-row items-center justify-center border-l border-indigo-600"
-        >
-          <div class="flex text-2xl font-extrabold text-indigo-600">
-            其餘作品
+        <div class="flex w-full flex-row items-center justify-center">
+          <div class="hidden md:flex md:w-4/6">
+            <p>After reading it, Go wash and sleepp></p>
+          </div>
+          <div
+            class="flex h-full w-full flex-row items-center justify-center border-l border-indigo-600 md:w-2/6"
+          >
+            <a href="" class="flex text-2xl font-extrabold text-indigo-600">
+              其餘作品
+            </a>
           </div>
         </div>
       </Location>
-      <inner-box class="flex h-[60vh] flex-row xl:h-[80vh]">
+      <inner-box class="flex h-[40vh] flex-row xl:h-[80vh]">
         <bubble
-          class="sm::w-4/6 relative flex items-center justify-center border-x border-indigo-600 bg-teal-200 xl:border-none"
+          class="xl::w-4/6 relative flex w-full items-center justify-center border-x border-indigo-600 bg-teal-200 xl:border-r-0 xl:border-l"
         >
-          <img class="z-10 flex w-4/6" :src="whatToBring" alt="whatToBring" />
-          <div class="absolute top-[5rem] font-mono text-5xl text-indigo-300">
-            {{ temperature9am }}°C
-          </div>
-          <div class="absolute top-[3rem] font-mono text-5xl text-indigo-100">
-            What To Bring
-          </div>
-          <div
-            class="absolute left-[5rem] bottom-[2rem] font-mono text-xl text-indigo-300"
-          >
-            明日
-          </div>
-          <div
-            class="absolute left-[5rem] bottom-[5rem] font-mono text-xl text-indigo-300"
-          >
-            明日
-          </div>
-          <div
-            class="absolute left-[5rem] bottom-[8rem] font-mono text-xl text-indigo-300"
-          >
-            明日
-          </div>
-          <div
-            class="absolute left-[5rem] bottom-[11rem] font-mono text-xl text-indigo-300"
-          >
-            明日
-          </div>
-          <div
-            class="absolute left-[5rem] bottom-[14rem] font-mono text-xl text-indigo-300"
-          >
-            明日
-          </div>
-          <div
-            class="absolute right-[23rem] bottom-[4rem] font-mono text-5xl text-indigo-300"
-          >
-            {{ temperature6pm }}°C
-          </div>
-          <div
-            class="absolute right-[23rem] bottom-[4rem] font-mono text-5xl text-indigo-300"
-          >
-            {{ temperature9am }}°C
-          </div>
-          <div
-            class="absolute right-[19rem] top-[2rem] font-mono text-5xl text-indigo-300"
-          >
-            {{ description9am }}
-          </div>
-          <div
-            class="absolute left-[12rem] top-[10rem] font-mono text-5xl text-indigo-300"
-          >
-            {{ description6pm }}
-          </div>
-          <div
-            class="absolute left-[22rem] top-[16rem] font-mono text-5xl text-indigo-300"
-          >
-            {{ chanceOfRain }}
-          </div>
-          <div
-            class="absolute left-[8rem] top-[4rem] font-mono text-5xl text-indigo-300"
-          >
-            {{ updateTime }}
-          </div>
+          <img class="z-10 flex w-3/6" :src="whatToBring" alt="whatToBring" />
         </bubble>
-        <information class="hidden w-2/6 flex-col xl:flex">
+        <information class="hidden w-3/6 flex-col xl:flex">
           <div
             class="relative flex h-3/6 flex-row items-center justify-center border-x border-indigo-600"
           >
@@ -133,16 +74,20 @@
             >
               明日預報
             </div>
-            <div class="flex flex-row items-center font-mono text-indigo-600">
-              <div class="pr-3 text-xl xl:text-4xl">9A.M:</div>
-              <div class="text-base xl:text-xl">
-                溫度：{{ temperature9am }}°C,天氣狀態：{{ description9am }}
+            <div>
+              <div
+                class="flex items-center font-mono text-indigo-600 xl:flex-row"
+              >
+                <div class="pr-3 text-xl xl:text-4xl">9A.M:</div>
+                <div class="text-base xl:text-xl">
+                  溫度：{{ temperature9am }}°C,天氣狀態：{{ description9am }}
+                </div>
               </div>
-            </div>
-            <div class="flex flex-row items-center font-mono text-indigo-600">
-              <div class="pr-3 text-xl xl:text-4xl">6P.M:</div>
-              <div class="text-base xl:text-xl">
-                溫度：{{ temperature6pm }}°C,天氣狀態：{{ description6pm }}
+              <div class="flex flex-row items-center font-mono text-indigo-600">
+                <div class="pr-3 text-xl xl:text-4xl">6P.M:</div>
+                <div class="text-base xl:text-xl">
+                  溫度：{{ temperature6pm }}°C,天氣狀態：{{ description6pm }}
+                </div>
               </div>
             </div>
           </div>
@@ -155,44 +100,46 @@
           </div>
         </information>
       </inner-box>
-      <information class="relative flex h-[20vh] w-full flex-col xl:hidden">
+      <information class="relative flex h-auto w-full flex-col xl:hidden">
         <div
-          class="flex h-4/6 flex-col items-center justify-center border border-indigo-600"
+          class="flex h-4/6 flex-col items-center justify-center border border-indigo-600 py-6"
         >
           <div
             class="float-left text-2xl font-extrabold text-indigo-600 xl:text-4xl"
           >
             明日預報
           </div>
-          <div class="flex flex-row items-center font-mono text-indigo-600">
-            <div class="pr-3 text-xl xl:text-4xl">9A.M-</div>
-            <div class="text-base xl:text-xl">
-              溫度：{{ temperature9am }}°C,天氣狀態：{{ description9am }}
+          <div>
+            <div class="flex flex-row items-center font-mono text-indigo-600">
+              <div class="pr-3 text-xl xl:text-4xl">9A.M-</div>
+              <div class="text-base xl:text-xl">
+                溫度：{{ temperature9am }}°C,天氣狀態：{{ description9am }}
+              </div>
             </div>
-          </div>
-          <div class="flex flex-row items-center font-mono text-indigo-600">
-            <div class="pr-3 text-xl xl:text-4xl">6P.M-</div>
-            <div class="text-base xl:text-4xl">
-              溫度：{{ temperature6pm }}°C,天氣狀態：{{ description6pm }}
+            <div class="flex flex-row items-center font-mono text-indigo-600">
+              <div class="pr-3 text-xl xl:text-4xl">6P.M-</div>
+              <div class="text-base xl:text-4xl">
+                溫度：{{ temperature6pm }}°C,天氣狀態：{{ description6pm }}
+              </div>
             </div>
           </div>
         </div>
         <div
-          class="boede flex h-2/6 flex-row items-center justify-center border-x border-indigo-600 text-indigo-600"
+          class="boede flex h-2/6 flex-row items-center justify-center border-x border-indigo-600 py-6 text-indigo-600"
         >
           <div class="text-xl font-extrabold xl:text-4xl">
             降雨機率：{{ chanceOfRain }}%
           </div>
         </div>
       </information>
-      <UpdateTime class="relative flex h-[4vh] flex-row xl:h-[5vh]">
+      <UpdateTime class="relative flex h-[4vh] h-auto flex-row xl:h-[5vh]">
         <div
-          class="flex w-2/12 justify-center bg-indigo-600 pt-2 pb-2 font-mono text-sm text-white xl:w-1/12"
+          class="flex w-3/12 items-center justify-center bg-indigo-600 py-2 font-mono text-sm text-white xl:w-1/12"
         >
           更新時間
         </div>
         <div
-          class="flex w-10/12 justify-center border border-indigo-600 pt-2 pb-2 font-mono text-sm text-indigo-600 xl:w-11/12"
+          class="flex w-9/12 items-center justify-center border border-indigo-600 pt-2 pb-2 font-mono text-sm text-indigo-600 xl:w-11/12"
         >
           {{ updateTime }}
         </div>
