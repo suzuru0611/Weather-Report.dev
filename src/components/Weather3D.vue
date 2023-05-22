@@ -7,7 +7,7 @@
         class="relative flex h-[7vh] flex-row border border-indigo-600 xl:h-[15vh]"
       >
         <div class="flex w-[10rem] items-center justify-center xl:w-[10rem]">
-          <img src="../assets/weather_icon.svg" alt="logo" />
+          <img class="m-3" src="../assets/weather_icon.svg" alt="logo" />
         </div>
         <div
           class="flex h-full w-[10rem] items-center justify-center border-x border-indigo-600 font-bold text-indigo-600 xl:w-[15rem] xl:text-[2rem]"
@@ -105,20 +105,24 @@
           class="flex h-4/6 flex-col items-center justify-center border border-indigo-600 py-6"
         >
           <div
-            class="float-left text-2xl font-extrabold text-indigo-600 xl:text-4xl"
+            class="float-left text-3xl font-extrabold text-indigo-600 xl:text-4xl"
           >
             明日預報
           </div>
-          <div>
-            <div class="flex flex-row items-center font-mono text-indigo-600">
-              <div class="pr-3 text-xl xl:text-4xl">9A.M-</div>
-              <div class="text-base xl:text-xl">
+          <div class="items-start justify-start pt-10">
+            <div
+              class="flex w-full flex-col items-center font-mono text-indigo-600"
+            >
+              <div class="pr-3 text-2xl font-semibold">-9A.M-</div>
+              <div class="py-3 text-xl">
                 溫度：{{ temperature9am }}°C,天氣狀態：{{ description9am }}
               </div>
             </div>
-            <div class="flex flex-row items-center font-mono text-indigo-600">
-              <div class="pr-3 text-xl xl:text-4xl">6P.M-</div>
-              <div class="text-base xl:text-4xl">
+            <div
+              class="flex flex-col items-center font-mono text-indigo-600 xl:flex-row"
+            >
+              <div class="pr-3 text-2xl font-semibold">-6P.M-</div>
+              <div class="py-3 text-xl">
                 溫度：{{ temperature6pm }}°C,天氣狀態：{{ description6pm }}
               </div>
             </div>
