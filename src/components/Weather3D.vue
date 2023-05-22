@@ -7,7 +7,7 @@
         class="relative flex h-[7vh] flex-row border border-indigo-600 xl:h-[15vh]"
       >
         <div class="flex w-[10rem] items-center justify-center xl:w-[10rem]">
-          <img class="m-3" src="../assets/weather_icon.svg" alt="logo" />
+          <img class="m-2" src="../assets/weather_icon.svg" alt="logo" />
         </div>
         <div
           class="flex h-full w-[10rem] items-center justify-center border-x border-indigo-600 font-bold text-indigo-600 xl:w-[15rem] xl:text-[2rem]"
@@ -27,8 +27,14 @@
           <div class="text-indigo-600">{{ currentTem }}°C</div>
         </div>
         <div class="flex w-full flex-row items-center justify-center">
-          <div class="hidden md:flex md:w-4/6">
-            <p>After reading it, Go wash and sleepp></p>
+          <div class="hidden overflow-hidden md:flex md:w-4/6">
+            <div
+              class="marquee text-bold text-[1rem] text-indigo-600 xl:text-[2rem]"
+            >
+              <span>AFTER READING IT, GO WASH AND SLEEP</span>
+              <span>AFTER READING IT, GO WASH AND SLEEP</span>
+              <span>AFTER READING IT, GO WASH AND SLEEP</span>
+            </div>
           </div>
           <div
             class="flex h-full w-full flex-row items-center justify-center border-l border-indigo-600 md:w-2/6"
@@ -41,9 +47,14 @@
       </Location>
       <inner-box class="flex h-[40vh] flex-row xl:h-[80vh]">
         <bubble
-          class="xl::w-4/6 relative flex w-full items-center justify-center border-x border-indigo-600 bg-teal-200 xl:border-r-0 xl:border-l"
+          class="xl::w-4/6 relative flex w-full items-center justify-center border-x border-indigo-600 bg-teal-300 xl:border-r-0 xl:border-l"
         >
           <img class="z-10 flex w-3/6" :src="whatToBring" alt="whatToBring" />
+          <div
+            class="absolute animate-pulse text-[1.3rem] font-extrabold text-white xl:text-[4.5rem]"
+          >
+            TAKE IT OUT TOMORROW
+          </div>
         </bubble>
         <information class="hidden w-3/6 flex-col xl:flex">
           <div
@@ -65,6 +76,11 @@
               loop
               muted
             ></video>
+            <div
+              class="absolute top-3 text-[1.3rem] font-extrabold text-indigo-600 xl:text-[1.5rem]"
+            >
+              IMAGERY OF WEATHER CONDITIONS
+            </div>
           </div>
           <div
             class="flex h-2/6 flex-col items-center justify-center border border-indigo-600"
@@ -155,6 +171,12 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import axios from "axios";
+import bubble_rain from "../assets/bubble_rain.gif";
+import bubble_sun from "../assets/bubble_sun.gif";
+import umbrella from "../assets/umbrella.gif";
+import skateboard from "../assets/skateboard.gif";
+import rain from "../assets/rain.webm";
+import sun from "../assets/sun.webm";
 
 const API_KEY = "CWB-B11B778A-92F5-43CD-BBF4-D97FBBDE608D";
 const LOCATION_NAME = "大安區";
@@ -182,7 +204,6 @@ onMounted(() => {
 
 const fetchData = async () => {
   loading.value = true;
-
   try {
     const res = await axios.get(
       `https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-061?Authorization=${API_KEY}&locationName=${LOCATION_NAME}&elementName=Wx,T,PoP12h`
@@ -207,26 +228,46 @@ const fetchData = async () => {
 
 const bubbleGif = computed(() => {
   if (chanceOfRain.value > 60) {
-    return "./src/assets/bubble_rain.gif";
+    return bubble_rain;
   } else {
-    return "./src/assets/bubble_sun.gif";
+    return bubble_sun;
   }
 });
 
 const whatToBring = computed(() => {
   if (chanceOfRain.value > 60) {
-    return "./src/assets/umbrella.gif";
+    return umbrella;
   } else {
-    return "./src/assets/skateboard.gif";
+    return skateboard;
   }
 });
 const weatherGif = computed(() => {
   if (chanceOfRain.value > 60) {
-    return "./src/assets/rain.webm";
+    return rain;
   } else {
-    return "./src/assets/sun.webm";
+    return sun;
   }
 });
 onMounted(fetchData);
 setInterval(fetchData, 600000); // 每隔 10 分鐘重新載入一次資料
 </script>
+<style>
+.marquee {
+  white-space: nowrap;
+  width: 30rem;
+}
+.marquee span {
+  display: inline-block;
+  padding-right: 2rem;
+  animation: marquee 8s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+</style>
