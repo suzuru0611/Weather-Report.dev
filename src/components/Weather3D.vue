@@ -39,7 +39,10 @@
           <div
             class="flex h-full w-full flex-row items-center justify-center border-l border-indigo-600 md:w-2/6"
           >
-            <a href="" class="flex text-2xl font-extrabold text-indigo-600">
+            <a
+              href="https://homepage-suzuru0611.vercel.app/works"
+              class="flex text-2xl font-extrabold text-indigo-600"
+            >
               其餘作品
             </a>
           </div>
