@@ -40,7 +40,7 @@
             class="flex h-full w-full flex-row items-center justify-center border-l border-indigo-600 md:w-2/6"
           >
             <a
-              href="https://homepage-suzuru0611.vercel.app/works"
+              href="https://suzuru.vercel.app/"
               class="flex text-2xl font-extrabold text-indigo-600"
             >
               其餘作品
